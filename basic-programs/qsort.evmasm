@@ -1,0 +1,847 @@
+
+======= qsort.sol:test =======
+EVM assembly:
+    /* "qsort.sol":66:814  contract test {... */
+  mstore(0x40, 0x80)
+  callvalue
+  dup1
+  iszero
+  tag_1
+  jumpi
+  0x00
+  dup1
+  revert
+tag_1:
+  pop
+  dataSize(sub_0)
+  dup1
+  dataOffset(sub_0)
+  0x00
+  codecopy
+  0x00
+  return
+stop
+
+sub_0: assembly {
+        /* "qsort.sol":66:814  contract test {... */
+      mstore(0x40, 0x80)
+      callvalue
+      dup1
+      iszero
+      tag_1
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_1:
+      pop
+      jumpi(tag_2, lt(calldatasize, 0x04))
+      shr(0xe0, calldataload(0x00))
+      dup1
+      0x2b772d8f
+      eq
+      tag_3
+      jumpi
+      dup1
+      0x38ed684d
+      eq
+      tag_4
+      jumpi
+    tag_2:
+      0x00
+      dup1
+      revert
+        /* "qsort.sol":529:812  function qsort (uint[] memory array, uint begin, uint end) public pure {... */
+    tag_3:
+      tag_5
+      tag_6
+      calldatasize
+      0x04
+      tag_7
+      jump	// in
+    tag_6:
+      tag_8
+      jump	// in
+    tag_5:
+      stop
+        /* "qsort.sol":84:526  function partition_arr (uint[] memory array, uint left, uint right) public pure returns (uint) {... */
+    tag_4:
+      tag_9
+      tag_10
+      calldatasize
+      0x04
+      tag_7
+      jump	// in
+    tag_10:
+      tag_11
+      jump	// in
+    tag_9:
+      mload(0x40)
+        /* "#utility.yul":1550:1575   */
+      swap1
+      dup2
+      mstore
+        /* "#utility.yul":1538:1540   */
+      0x20
+        /* "#utility.yul":1523:1541   */
+      add
+        /* "qsort.sol":84:526  function partition_arr (uint[] memory array, uint left, uint right) public pure returns (uint) {... */
+      mload(0x40)
+      dup1
+      swap2
+      sub
+      swap1
+      return
+        /* "qsort.sol":529:812  function qsort (uint[] memory array, uint begin, uint end) public pure {... */
+    tag_8:
+        /* "qsort.sol":617:620  end */
+      dup1
+        /* "qsort.sol":608:613  begin */
+      dup3
+        /* "qsort.sol":608:620  begin >= end */
+      lt
+        /* "qsort.sol":604:633  if (begin >= end)... */
+      tag_15
+      jumpi
+        /* "qsort.sol":529:812  function qsort (uint[] memory array, uint begin, uint end) public pure {... */
+      pop
+      pop
+      pop
+      jump	// out
+        /* "qsort.sol":604:633  if (begin >= end)... */
+    tag_15:
+        /* "qsort.sol":654:655  1 */
+      0x01
+        /* "qsort.sol":636:644  uint res */
+      0x00
+        /* "qsort.sol":689:722  partition_arr (array, begin, end) */
+      tag_16
+        /* "qsort.sol":704:709  array */
+      dup6
+        /* "qsort.sol":711:716  begin */
+      dup6
+        /* "qsort.sol":718:721  end */
+      dup6
+        /* "qsort.sol":689:702  partition_arr */
+      tag_11
+        /* "qsort.sol":689:722  partition_arr (array, begin, end) */
+      jump	// in
+    tag_16:
+        /* "qsort.sol":677:722  key_index = partition_arr (array, begin, end) */
+      swap1
+      pop
+        /* "qsort.sol":726:761  qsort (array, begin, key_index - 1) */
+      tag_17
+        /* "qsort.sol":733:738  array */
+      dup6
+        /* "qsort.sol":740:745  begin */
+      dup6
+        /* "qsort.sol":747:760  key_index - 1 */
+      tag_6
+        /* "qsort.sol":759:760  1 */
+      0x01
+        /* "qsort.sol":677:722  key_index = partition_arr (array, begin, end) */
+      dup6
+        /* "qsort.sol":747:760  key_index - 1 */
+      tag_19
+      jump	// in
+        /* "qsort.sol":726:761  qsort (array, begin, key_index - 1) */
+    tag_17:
+        /* "qsort.sol":765:798  qsort (array, key_index + 1, end) */
+      tag_20
+        /* "qsort.sol":772:777  array */
+      dup6
+        /* "qsort.sol":779:792  key_index + 1 */
+      tag_21
+        /* "qsort.sol":779:788  key_index */
+      dup4
+        /* "qsort.sol":791:792  1 */
+      0x01
+        /* "qsort.sol":779:792  key_index + 1 */
+      tag_22
+      jump	// in
+    tag_21:
+        /* "qsort.sol":794:797  end */
+      dup6
+        /* "qsort.sol":765:770  qsort */
+      tag_8
+        /* "qsort.sol":765:798  qsort (array, key_index + 1, end) */
+      jump	// in
+    tag_20:
+        /* "qsort.sol":802:809  return; */
+      pop
+      pop
+        /* "qsort.sol":529:812  function qsort (uint[] memory array, uint begin, uint end) public pure {... */
+      pop
+      pop
+      pop
+      jump	// out
+        /* "qsort.sol":84:526  function partition_arr (uint[] memory array, uint left, uint right) public pure returns (uint) {... */
+    tag_11:
+        /* "qsort.sol":173:177  uint */
+      0x00
+        /* "qsort.sol":277:281  left */
+      dup3
+        /* "qsort.sol":285:508  for (i = left; i <= right; i ++) {... */
+    tag_24:
+        /* "qsort.sol":305:310  right */
+      dup3
+        /* "qsort.sol":300:301  i */
+      dup2
+        /* "qsort.sol":300:310  i <= right */
+      gt
+        /* "qsort.sol":285:508  for (i = left; i <= right; i ++) {... */
+      tag_25
+      jumpi
+        /* "qsort.sol":338:343  array */
+      dup5
+        /* "qsort.sol":344:348  left */
+      dup5
+        /* "qsort.sol":338:349  array[left] */
+      dup2
+      mload
+      dup2
+      lt
+      tag_28
+      jumpi
+      tag_28
+      tag_29
+      jump	// in
+    tag_28:
+      0x20
+      mul
+      0x20
+      add
+      add
+      mload
+        /* "qsort.sol":327:332  array */
+      dup6
+        /* "qsort.sol":333:334  i */
+      dup3
+        /* "qsort.sol":327:335  array[i] */
+      dup2
+      mload
+      dup2
+      lt
+      tag_31
+      jumpi
+      tag_31
+      tag_29
+      jump	// in
+    tag_31:
+      0x20
+      mul
+      0x20
+      add
+      add
+      mload
+        /* "qsort.sol":327:349  array[i] < array[left] */
+      lt
+        /* "qsort.sol":323:504  if (array[i] < array[left]) {... */
+      iszero
+      tag_32
+      jumpi
+        /* "qsort.sol":370:379  uint temp */
+      0x00
+        /* "qsort.sol":382:387  array */
+      dup6
+        /* "qsort.sol":388:392  left */
+      dup6
+        /* "qsort.sol":382:393  array[left] */
+      dup2
+      mload
+      dup2
+      lt
+      tag_34
+      jumpi
+      tag_34
+      tag_29
+      jump	// in
+    tag_34:
+      0x20
+      mul
+      0x20
+      add
+      add
+      mload
+        /* "qsort.sol":370:393  uint temp = array[left] */
+      swap1
+      pop
+        /* "qsort.sol":413:418  array */
+      dup6
+        /* "qsort.sol":419:420  i */
+      dup3
+        /* "qsort.sol":413:421  array[i] */
+      dup2
+      mload
+      dup2
+      lt
+      tag_36
+      jumpi
+      tag_36
+      tag_29
+      jump	// in
+    tag_36:
+      0x20
+      mul
+      0x20
+      add
+      add
+      mload
+        /* "qsort.sol":399:404  array */
+      dup7
+        /* "qsort.sol":405:409  left */
+      dup7
+        /* "qsort.sol":399:410  array[left] */
+      dup2
+      mload
+      dup2
+      lt
+      tag_38
+      jumpi
+      tag_38
+      tag_29
+      jump	// in
+    tag_38:
+      0x20
+      swap1
+      dup2
+      mul
+      swap2
+      swap1
+      swap2
+      add
+      add
+        /* "qsort.sol":399:421  array[left] = array[i] */
+      mstore
+        /* "qsort.sol":438:443  array */
+      dup6
+        /* "qsort.sol":444:450  left+1 */
+      tag_39
+        /* "qsort.sol":444:448  left */
+      dup7
+        /* "qsort.sol":449:450  1 */
+      0x01
+        /* "qsort.sol":444:450  left+1 */
+      tag_22
+      jump	// in
+    tag_39:
+        /* "qsort.sol":438:451  array[left+1] */
+      dup2
+      mload
+      dup2
+      lt
+      tag_41
+      jumpi
+      tag_41
+      tag_29
+      jump	// in
+    tag_41:
+      0x20
+      mul
+      0x20
+      add
+      add
+      mload
+        /* "qsort.sol":427:432  array */
+      dup7
+        /* "qsort.sol":433:434  i */
+      dup4
+        /* "qsort.sol":427:435  array[i] */
+      dup2
+      mload
+      dup2
+      lt
+      tag_43
+      jumpi
+      tag_43
+      tag_29
+      jump	// in
+    tag_43:
+      0x20
+      swap1
+      dup2
+      mul
+      swap2
+      swap1
+      swap2
+      add
+      add
+        /* "qsort.sol":427:451  array[i] = array[left+1] */
+      mstore
+        /* "qsort.sol":473:477  temp */
+      dup1
+        /* "qsort.sol":457:462  array */
+      dup7
+        /* "qsort.sol":463:469  left+1 */
+      tag_44
+        /* "qsort.sol":463:467  left */
+      dup8
+        /* "qsort.sol":468:469  1 */
+      0x01
+        /* "qsort.sol":463:469  left+1 */
+      tag_22
+      jump	// in
+    tag_44:
+        /* "qsort.sol":457:470  array[left+1] */
+      dup2
+      mload
+      dup2
+      lt
+      tag_46
+      jumpi
+      tag_46
+      tag_29
+      jump	// in
+    tag_46:
+      0x20
+      swap1
+      dup2
+      mul
+      swap2
+      swap1
+      swap2
+      add
+      add
+        /* "qsort.sol":457:477  array[left+1] = temp */
+      mstore
+        /* "qsort.sol":490:498  left + 1 */
+      tag_47
+        /* "qsort.sol":490:494  left */
+      dup6
+        /* "qsort.sol":497:498  1 */
+      0x01
+        /* "qsort.sol":490:498  left + 1 */
+      tag_22
+      jump	// in
+    tag_47:
+        /* "qsort.sol":483:498  left = left + 1 */
+      swap5
+      pop
+        /* "qsort.sol":351:504  {... */
+      pop
+        /* "qsort.sol":323:504  if (array[i] < array[left]) {... */
+    tag_32:
+        /* "qsort.sol":312:316  i ++ */
+      dup1
+      tag_48
+      dup2
+      tag_49
+      jump	// in
+    tag_48:
+      swap2
+      pop
+      pop
+        /* "qsort.sol":285:508  for (i = left; i <= right; i ++) {... */
+      jump(tag_24)
+    tag_25:
+      pop
+        /* "qsort.sol":518:522  left */
+      swap2
+      swap4
+        /* "qsort.sol":84:526  function partition_arr (uint[] memory array, uint left, uint right) public pure returns (uint) {... */
+      swap3
+      pop
+      pop
+      pop
+      jump	// out
+        /* "#utility.yul":14:141   */
+    tag_50:
+        /* "#utility.yul":75:85   */
+      0x4e487b71
+        /* "#utility.yul":70:73   */
+      0xe0
+        /* "#utility.yul":66:86   */
+      shl
+        /* "#utility.yul":63:64   */
+      0x00
+        /* "#utility.yul":56:87   */
+      mstore
+        /* "#utility.yul":106:110   */
+      0x41
+        /* "#utility.yul":103:104   */
+      0x04
+        /* "#utility.yul":96:111   */
+      mstore
+        /* "#utility.yul":130:134   */
+      0x24
+        /* "#utility.yul":127:128   */
+      0x00
+        /* "#utility.yul":120:135   */
+      revert
+        /* "#utility.yul":146:1399   */
+    tag_7:
+        /* "#utility.yul":248:254   */
+      0x00
+        /* "#utility.yul":256:262   */
+      dup1
+        /* "#utility.yul":264:270   */
+      0x00
+        /* "#utility.yul":317:319   */
+      0x60
+        /* "#utility.yul":305:314   */
+      dup5
+        /* "#utility.yul":296:303   */
+      dup7
+        /* "#utility.yul":292:315   */
+      sub
+        /* "#utility.yul":288:320   */
+      slt
+        /* "#utility.yul":285:337   */
+      iszero
+      tag_55
+      jumpi
+        /* "#utility.yul":333:334   */
+      0x00
+        /* "#utility.yul":330:331   */
+      dup1
+        /* "#utility.yul":323:335   */
+      revert
+        /* "#utility.yul":285:337   */
+    tag_55:
+        /* "#utility.yul":373:382   */
+      dup4
+        /* "#utility.yul":360:383   */
+      calldataload
+        /* "#utility.yul":402:420   */
+      0xffffffffffffffff
+        /* "#utility.yul":443:445   */
+      dup1
+        /* "#utility.yul":435:441   */
+      dup3
+        /* "#utility.yul":432:446   */
+      gt
+        /* "#utility.yul":429:463   */
+      iszero
+      tag_56
+      jumpi
+        /* "#utility.yul":459:460   */
+      0x00
+        /* "#utility.yul":456:457   */
+      dup1
+        /* "#utility.yul":449:461   */
+      revert
+        /* "#utility.yul":429:463   */
+    tag_56:
+        /* "#utility.yul":497:503   */
+      dup2
+        /* "#utility.yul":486:495   */
+      dup7
+        /* "#utility.yul":482:504   */
+      add
+        /* "#utility.yul":472:504   */
+      swap2
+      pop
+        /* "#utility.yul":542:549   */
+      dup7
+        /* "#utility.yul":535:539   */
+      0x1f
+        /* "#utility.yul":531:533   */
+      dup4
+        /* "#utility.yul":527:540   */
+      add
+        /* "#utility.yul":523:550   */
+      slt
+        /* "#utility.yul":513:568   */
+      tag_57
+      jumpi
+        /* "#utility.yul":564:565   */
+      0x00
+        /* "#utility.yul":561:562   */
+      dup1
+        /* "#utility.yul":554:566   */
+      revert
+        /* "#utility.yul":513:568   */
+    tag_57:
+        /* "#utility.yul":600:602   */
+      dup2
+        /* "#utility.yul":587:603   */
+      calldataload
+        /* "#utility.yul":622:626   */
+      0x20
+        /* "#utility.yul":645:647   */
+      dup3
+        /* "#utility.yul":641:643   */
+      dup3
+        /* "#utility.yul":638:648   */
+      gt
+        /* "#utility.yul":635:671   */
+      iszero
+      tag_59
+      jumpi
+        /* "#utility.yul":651:669   */
+      tag_59
+      tag_50
+      jump	// in
+    tag_59:
+        /* "#utility.yul":697:699   */
+      dup2
+        /* "#utility.yul":694:695   */
+      0x05
+        /* "#utility.yul":690:700   */
+      shl
+        /* "#utility.yul":729:731   */
+      0x40
+        /* "#utility.yul":723:732   */
+      mload
+        /* "#utility.yul":792:794   */
+      0x1f
+        /* "#utility.yul":788:795   */
+      not
+        /* "#utility.yul":783:785   */
+      0x3f
+        /* "#utility.yul":779:781   */
+      dup4
+        /* "#utility.yul":775:786   */
+      add
+        /* "#utility.yul":771:796   */
+      and
+        /* "#utility.yul":763:769   */
+      dup2
+        /* "#utility.yul":759:797   */
+      add
+        /* "#utility.yul":847:853   */
+      dup2
+        /* "#utility.yul":835:845   */
+      dup2
+        /* "#utility.yul":832:854   */
+      lt
+        /* "#utility.yul":827:829   */
+      dup7
+        /* "#utility.yul":815:825   */
+      dup3
+        /* "#utility.yul":812:830   */
+      gt
+        /* "#utility.yul":809:855   */
+      or
+        /* "#utility.yul":806:878   */
+      iszero
+      tag_61
+      jumpi
+        /* "#utility.yul":858:876   */
+      tag_61
+      tag_50
+      jump	// in
+    tag_61:
+        /* "#utility.yul":894:896   */
+      0x40
+        /* "#utility.yul":887:909   */
+      mstore
+        /* "#utility.yul":944:962   */
+      swap3
+      dup4
+      mstore
+        /* "#utility.yul":978:993   */
+      dup2
+      dup4
+      add
+      swap4
+      pop
+        /* "#utility.yul":1020:1031   */
+      dup5
+      dup2
+      add
+        /* "#utility.yul":1016:1036   */
+      dup3
+      add
+      swap3
+        /* "#utility.yul":1048:1067   */
+      dup11
+      dup5
+      gt
+        /* "#utility.yul":1045:1084   */
+      iszero
+      tag_62
+      jumpi
+        /* "#utility.yul":1080:1081   */
+      0x00
+        /* "#utility.yul":1077:1078   */
+      dup1
+        /* "#utility.yul":1070:1082   */
+      revert
+        /* "#utility.yul":1045:1084   */
+    tag_62:
+        /* "#utility.yul":1104:1115   */
+      swap5
+      dup3
+      add
+      swap5
+        /* "#utility.yul":1124:1266   */
+    tag_63:
+        /* "#utility.yul":1140:1146   */
+      dup4
+        /* "#utility.yul":1135:1138   */
+      dup7
+        /* "#utility.yul":1132:1147   */
+      lt
+        /* "#utility.yul":1124:1266   */
+      iszero
+      tag_65
+      jumpi
+        /* "#utility.yul":1206:1223   */
+      dup6
+      calldataload
+        /* "#utility.yul":1194:1224   */
+      dup6
+      mstore
+        /* "#utility.yul":1157:1169   */
+      swap5
+      dup3
+      add
+      swap5
+        /* "#utility.yul":1244:1256   */
+      swap4
+      dup3
+      add
+      swap4
+        /* "#utility.yul":1124:1266   */
+      jump(tag_63)
+    tag_65:
+        /* "#utility.yul":1285:1291   */
+      swap11
+        /* "#utility.yul":1323:1341   */
+      swap2
+      dup10
+      add
+        /* "#utility.yul":1310:1342   */
+      calldataload
+      swap10
+      pop
+      pop
+        /* "#utility.yul":1389:1391   */
+      0x40
+        /* "#utility.yul":1374:1392   */
+      swap1
+      swap8
+      add
+        /* "#utility.yul":1361:1393   */
+      calldataload
+      swap7
+        /* "#utility.yul":146:1399   */
+      swap6
+      pop
+      pop
+      pop
+      pop
+      pop
+      pop
+      jump	// out
+        /* "#utility.yul":1586:1713   */
+    tag_51:
+        /* "#utility.yul":1647:1657   */
+      0x4e487b71
+        /* "#utility.yul":1642:1645   */
+      0xe0
+        /* "#utility.yul":1638:1658   */
+      shl
+        /* "#utility.yul":1635:1636   */
+      0x00
+        /* "#utility.yul":1628:1659   */
+      mstore
+        /* "#utility.yul":1678:1682   */
+      0x11
+        /* "#utility.yul":1675:1676   */
+      0x04
+        /* "#utility.yul":1668:1683   */
+      mstore
+        /* "#utility.yul":1702:1706   */
+      0x24
+        /* "#utility.yul":1699:1700   */
+      0x00
+        /* "#utility.yul":1692:1707   */
+      revert
+        /* "#utility.yul":1718:1846   */
+    tag_19:
+        /* "#utility.yul":1785:1794   */
+      dup2
+      dup2
+      sub
+        /* "#utility.yul":1806:1817   */
+      dup2
+      dup2
+      gt
+        /* "#utility.yul":1803:1840   */
+      iszero
+      tag_70
+      jumpi
+        /* "#utility.yul":1820:1838   */
+      tag_70
+      tag_51
+      jump	// in
+    tag_70:
+        /* "#utility.yul":1718:1846   */
+      swap3
+      swap2
+      pop
+      pop
+      jump	// out
+        /* "#utility.yul":1851:1976   */
+    tag_22:
+        /* "#utility.yul":1916:1925   */
+      dup1
+      dup3
+      add
+        /* "#utility.yul":1937:1947   */
+      dup1
+      dup3
+      gt
+        /* "#utility.yul":1934:1970   */
+      iszero
+      tag_70
+      jumpi
+        /* "#utility.yul":1950:1968   */
+      tag_70
+      tag_51
+      jump	// in
+        /* "#utility.yul":1981:2108   */
+    tag_29:
+        /* "#utility.yul":2042:2052   */
+      0x4e487b71
+        /* "#utility.yul":2037:2040   */
+      0xe0
+        /* "#utility.yul":2033:2053   */
+      shl
+        /* "#utility.yul":2030:2031   */
+      0x00
+        /* "#utility.yul":2023:2054   */
+      mstore
+        /* "#utility.yul":2073:2077   */
+      0x32
+        /* "#utility.yul":2070:2071   */
+      0x04
+        /* "#utility.yul":2063:2078   */
+      mstore
+        /* "#utility.yul":2097:2101   */
+      0x24
+        /* "#utility.yul":2094:2095   */
+      0x00
+        /* "#utility.yul":2087:2102   */
+      revert
+        /* "#utility.yul":2113:2248   */
+    tag_49:
+        /* "#utility.yul":2152:2155   */
+      0x00
+        /* "#utility.yul":2173:2190   */
+      0x01
+      dup3
+      add
+        /* "#utility.yul":2170:2213   */
+      tag_77
+      jumpi
+        /* "#utility.yul":2193:2211   */
+      tag_77
+      tag_51
+      jump	// in
+    tag_77:
+      pop
+        /* "#utility.yul":2240:2241   */
+      0x01
+        /* "#utility.yul":2229:2242   */
+      add
+      swap1
+        /* "#utility.yul":2113:2248   */
+      jump	// out
+
+    auxdata: 0xa26469706673582212201b9a128e298f02f0e37298d85eba985eca6c85e6a764c1dd51ba29075b0f370164736f6c63430008190033
+}
+

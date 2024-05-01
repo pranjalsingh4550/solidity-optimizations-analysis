@@ -1,0 +1,20 @@
+IR:	compilation flags: --optimize --ir-optimized
+Line 90: fun_qsort
+not(0) used instead of -1: 2's complement
+Lines 103-108, 114-119: checking overflow/underflow
+Is this needed as per partition() semantics? Can a small/big number be returned? TODO
+
+ASM:	solc-static-linux --optimize --asm qsort.sol
+
+I think these flags are right because unoptimized IR had a new variable defined for everything
+
+Reduntant Loads found!
+qsort.evasm -> tag_24 is the for loop inside partition_arr
+
+mload() in line 202: array[left]
+Line 204: lt (less than) might be an overflow check
+
+tag_28: mload() at line 223: array[i]
+
+tag_31: array(left) is mload()ed again for line 14 of qsort.sol (L252)
+tag_34: array(i) --- (L276)

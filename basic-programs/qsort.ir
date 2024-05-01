@@ -1,0 +1,190 @@
+Optimized IR:
+/// @use-src 0:"qsort.sol"
+object "test_131" {
+    code {
+        {
+            /// @src 0:66:814  "contract test {..."
+            let _1 := memoryguard(0x80)
+            mstore(64, _1)
+            if callvalue() { revert(0, 0) }
+            let _2 := datasize("test_131_deployed")
+            codecopy(_1, dataoffset("test_131_deployed"), _2)
+            return(_1, _2)
+        }
+    }
+    /// @use-src 0:"qsort.sol"
+    object "test_131_deployed" {
+        code {
+            {
+                /// @src 0:66:814  "contract test {..."
+                mstore(64, memoryguard(0x80))
+                if iszero(lt(calldatasize(), 4))
+                {
+                    switch shr(224, calldataload(0))
+                    case 0x2b772d8f {
+                        if callvalue() { revert(0, 0) }
+                        let param, param_1, param_2 := abi_decode_array_uint256_dynt_uint256t_uint256(calldatasize())
+                        fun_qsort(param, param_1, param_2)
+                        return(0, 0)
+                    }
+                    case 0x38ed684d {
+                        if callvalue() { revert(0, 0) }
+                        let param_3, param_4, param_5 := abi_decode_array_uint256_dynt_uint256t_uint256(calldatasize())
+                        let ret := fun_partition_arr(param_3, param_4, param_5)
+                        let memPos := mload(64)
+                        mstore(memPos, ret)
+                        return(memPos, 32)
+                    }
+                }
+                revert(0, 0)
+            }
+            function abi_decode_array_uint256_dynt_uint256t_uint256(dataEnd) -> value0, value1, value2
+            {
+                if slt(add(dataEnd, not(3)), 96) { revert(0, 0) }
+                let offset := calldataload(4)
+                let _1 := 0xffffffffffffffff
+                if gt(offset, _1) { revert(0, 0) }
+                if iszero(slt(add(offset, 35), dataEnd))
+                {
+                    revert(/** @src -1:-1:-1 */ 0, 0)
+                }
+                /// @src 0:66:814  "contract test {..."
+                let _2 := calldataload(add(4, offset))
+                if gt(_2, _1)
+                {
+                    mstore(/** @src -1:-1:-1 */ 0, /** @src 0:66:814  "contract test {..." */ shl(224, 0x4e487b71))
+                    mstore(4, 0x41)
+                    revert(/** @src -1:-1:-1 */ 0, /** @src 0:66:814  "contract test {..." */ 36)
+                }
+                let _3 := shl(5, _2)
+                let memPtr := mload(64)
+                let newFreePtr := add(memPtr, and(add(_3, 63), not(31)))
+                if or(gt(newFreePtr, _1), lt(newFreePtr, memPtr))
+                {
+                    mstore(/** @src -1:-1:-1 */ 0, /** @src 0:66:814  "contract test {..." */ shl(224, 0x4e487b71))
+                    mstore(4, 0x41)
+                    revert(/** @src -1:-1:-1 */ 0, /** @src 0:66:814  "contract test {..." */ 36)
+                }
+                mstore(64, newFreePtr)
+                let dst := memPtr
+                mstore(memPtr, _2)
+                let _4 := 0x20
+                dst := add(memPtr, 0x20)
+                let srcEnd := add(add(offset, _3), 36)
+                if gt(srcEnd, dataEnd)
+                {
+                    revert(/** @src -1:-1:-1 */ 0, 0)
+                }
+                /// @src 0:66:814  "contract test {..."
+                let src := add(offset, 36)
+                for { } lt(src, srcEnd) { src := add(src, _4) }
+                {
+                    mstore(dst, calldataload(src))
+                    dst := add(dst, _4)
+                }
+                value0 := memPtr
+                value1 := calldataload(36)
+                value2 := calldataload(68)
+            }
+            /// @ast-id 130 @src 0:529:812  "function qsort (uint[] memory array, uint begin, uint end) public pure {..."
+            function fun_qsort(var_array_82_mpos, var_begin, var_end)
+            {
+                /// @src 0:604:633  "if (begin >= end)..."
+                if /** @src 0:608:620  "begin >= end" */ iszero(lt(var_begin, var_end))
+                /// @src 0:604:633  "if (begin >= end)..."
+                {
+                    /// @src 0:625:633  "return ;"
+                    leave
+                }
+                /// @src 0:689:722  "partition_arr (array, begin, end)"
+                let expr := fun_partition_arr(var_array_82_mpos, var_begin, var_end)
+                /// @src 0:66:814  "contract test {..."
+                let diff := add(expr, not(0))
+                if gt(diff, expr)
+                {
+                    mstore(/** @src -1:-1:-1 */ 0, /** @src 0:66:814  "contract test {..." */ shl(224, 0x4e487b71))
+                    mstore(4, 0x11)
+                    revert(/** @src -1:-1:-1 */ 0, /** @src 0:66:814  "contract test {..." */ 0x24)
+                }
+                /// @src 0:747:760  "key_index - 1"
+                fun_qsort(var_array_82_mpos, var_begin, diff)
+                /// @src 0:66:814  "contract test {..."
+                let sum := add(expr, /** @src 0:654:655  "1" */ 0x01)
+                /// @src 0:66:814  "contract test {..."
+                if gt(expr, sum)
+                {
+                    mstore(/** @src -1:-1:-1 */ 0, /** @src 0:66:814  "contract test {..." */ shl(224, 0x4e487b71))
+                    mstore(4, 0x11)
+                    revert(/** @src -1:-1:-1 */ 0, /** @src 0:66:814  "contract test {..." */ 0x24)
+                }
+                /// @src 0:794:797  "end"
+                fun_qsort(var_array_82_mpos, /** @src 0:779:792  "key_index + 1" */ sum, /** @src 0:794:797  "end" */ var_end)
+            }
+            /// @src 0:66:814  "contract test {..."
+            function memory_array_index_access_uint256_dyn(baseRef, index) -> addr
+            {
+                if iszero(lt(index, mload(baseRef)))
+                {
+                    mstore(0, shl(224, 0x4e487b71))
+                    mstore(4, 0x32)
+                    revert(0, 0x24)
+                }
+                addr := add(add(baseRef, shl(5, index)), 32)
+            }
+            /// @ast-id 79 @src 0:84:526  "function partition_arr (uint[] memory array, uint left, uint right) public pure returns (uint) {..."
+            function fun_partition_arr(var_array_mpos, var_left, var_right) -> var
+            {
+                /// @src 0:268:281  "uint i = left"
+                let var_i := var_left
+                /// @src 0:290:298  "i = left"
+                var_i := var_left
+                /// @src 0:285:508  "for (i = left; i <= right; i ++) {..."
+                for { }
+                /** @src 0:300:310  "i <= right" */ iszero(gt(var_i, var_right))
+                /// @src 0:290:298  "i = left"
+                {
+                    /// @src 0:66:814  "contract test {..."
+                    if eq(var_i, not(0))
+                    {
+                        mstore(/** @src -1:-1:-1 */ 0, /** @src 0:66:814  "contract test {..." */ shl(224, 0x4e487b71))
+                        mstore(4, 0x11)
+                        revert(/** @src -1:-1:-1 */ 0, /** @src 0:66:814  "contract test {..." */ 0x24)
+                    }
+                    /// @src 0:312:316  "i ++"
+                    var_i := /** @src 0:66:814  "contract test {..." */ add(var_i, 1)
+                }
+                /// @src 0:312:316  "i ++"
+                {
+                    /// @src 0:66:814  "contract test {..."
+                    let _1 := mload(/** @src 0:327:335  "array[i]" */ memory_array_index_access_uint256_dyn(var_array_mpos, var_i))
+                    /// @src 0:323:504  "if (array[i] < array[left]) {..."
+                    if /** @src 0:327:349  "array[i] < array[left]" */ lt(_1, /** @src 0:66:814  "contract test {..." */ mload(/** @src 0:338:349  "array[left]" */ memory_array_index_access_uint256_dyn(var_array_mpos, var_left)))
+                    /// @src 0:323:504  "if (array[i] < array[left]) {..."
+                    {
+                        /// @src 0:66:814  "contract test {..."
+                        let _2 := mload(/** @src 0:382:393  "array[left]" */ memory_array_index_access_uint256_dyn(var_array_mpos, var_left))
+                        /// @src 0:66:814  "contract test {..."
+                        mstore(/** @src 0:399:421  "array[left] = array[i]" */ memory_array_index_access_uint256_dyn(var_array_mpos, var_left), /** @src 0:66:814  "contract test {..." */ mload(/** @src 0:413:421  "array[i]" */ memory_array_index_access_uint256_dyn(var_array_mpos, var_i)))
+                        /// @src 0:66:814  "contract test {..."
+                        let sum := add(var_left, 1)
+                        if gt(var_left, sum)
+                        {
+                            mstore(/** @src -1:-1:-1 */ 0, /** @src 0:66:814  "contract test {..." */ shl(224, 0x4e487b71))
+                            mstore(4, 0x11)
+                            revert(/** @src -1:-1:-1 */ 0, /** @src 0:66:814  "contract test {..." */ 0x24)
+                        }
+                        mstore(/** @src 0:427:451  "array[i] = array[left+1]" */ memory_array_index_access_uint256_dyn(var_array_mpos, var_i), /** @src 0:66:814  "contract test {..." */ mload(/** @src 0:438:451  "array[left+1]" */ memory_array_index_access_uint256_dyn(var_array_mpos, /** @src 0:444:450  "left+1" */ sum)))
+                        /// @src 0:66:814  "contract test {..."
+                        mstore(/** @src 0:457:477  "array[left+1] = temp" */ memory_array_index_access_uint256_dyn(var_array_mpos, /** @src 0:463:469  "left+1" */ sum), /** @src 0:66:814  "contract test {..." */ _2)
+                        /// @src 0:483:498  "left = left + 1"
+                        var_left := sum
+                    }
+                }
+                /// @src 0:511:522  "return left"
+                var := var_left
+            }
+        }
+        data ".metadata" hex"a2646970667358221220d7a3099241733fee524ac2787f15688789e2be1232c28a6e3952792ff8b9ff1664736f6c63430008190033"
+    }
+}
+
