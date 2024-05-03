@@ -8,6 +8,7 @@ contract test {
 		int m = l + 1;
 		int n = m * 1;
 		int o = n * 2;
+		o = o * 3;
 		int p = o * 3;
 		int q = p / 3;
 		int r = q * 3;

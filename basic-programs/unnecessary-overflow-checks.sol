@@ -13,9 +13,9 @@ contract test {
 		return result;
 	}
 
-	function unnecessary_overflow_checks(int[] memory array) public pure {
+	function unnecessary_overflow_checks(int[] memory array) public pure returns (int) {
 		int base = array[0x340];
-		int retval = simple_helper (base)
+		int retval = simple_helper (base);
 		// We know there's no scope for overflow/underflow here.
 		// Do the tools?
 		array[0x340] = retval - 1;
@@ -26,10 +26,15 @@ contract test {
 			if (retval < 0x3000) {
 				retval = 0x2000;
 				// We know there's no overflow/underflow problem here
-				array[0x25] = retval + 0x100;
+				retval = retval + 0x550;
+				array[0x25] = retval;
 			}
 		}
-		return;
+
+		if (retval > 0x1600) {
+			retval = retval + 0x18000;
+		}
+		return retval;
 
 	}
 }

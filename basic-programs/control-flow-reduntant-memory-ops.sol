@@ -6,7 +6,7 @@ contract test {
 		int b = array[4];
 		
 		// using hex numbers to search in output asm/yul
-		array[10] = 256; // useless store, should be removed
+		array[10] = 0x17500; // useless store, should be removed
 		if (a > b)
 			if (a > b + b)
 				array[10] = 0x400;
