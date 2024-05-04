@@ -1,0 +1,23 @@
+
+control-flow-reduntant-memory-ops.ir:
+array[10] = 0x17500 is unnecessary, but is present in IR and bytecode
+
+algebraic-simplifications.ir:
+LLVM would convert the two +1s into one +2, not Solidity
+checked_mul_int256_1043(): unnecessary checks for (x != 0) in multiply-by-1
+no pair of operations is merged
+duplicate functions are merged
+
+data-flow-inequalities-removal.ir:
+(val < 0x7000) is not evaluated twice, but `if expr {}` is used inside the bigger `if expr {}` block!
+
+(val == 0x7000) is computed separately. No other optimization to avoid/run any of the inner
+if blocks separately.
+
+Redundant loads are removed from the point before the unconditional store inside the outer if-block.
+Loads before an if-(unconditional else) are also removed.
+
+unnecessary-overflow-checks.ir:
+
+In the second if block, overflow checking is not done
+In the third block, overflow may happen and it is checked

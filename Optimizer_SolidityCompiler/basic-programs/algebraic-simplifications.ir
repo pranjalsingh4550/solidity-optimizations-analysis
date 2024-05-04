@@ -1,0 +1,164 @@
+Optimized IR:
+/// @use-src 0:"algebraic-simplifications.sol"
+object "test_161" {
+    code {
+        {
+            /// @src 0:40:988  "contract test {..."
+            let _1 := memoryguard(0x80)
+            mstore(64, _1)
+            if callvalue() { revert(0, 0) }
+            let _2 := datasize("test_161_deployed")
+            codecopy(_1, dataoffset("test_161_deployed"), _2)
+            return(_1, _2)
+        }
+    }
+    /// @use-src 0:"algebraic-simplifications.sol"
+    object "test_161_deployed" {
+        code {
+            {
+                /// @src 0:40:988  "contract test {..."
+                mstore(64, memoryguard(0x80))
+                if iszero(lt(calldatasize(), 4))
+                {
+                    switch shr(224, calldataload(0))
+                    case 0x60cd01ec {
+                        external_fun_algebraic_simplifications_clone()
+                    }
+                    case 0xd7bb48ac {
+                        external_fun_algebraic_simplifications_clone()
+                    }
+                }
+                revert(0, 0)
+            }
+            function external_fun_algebraic_simplifications_clone()
+            {
+                if callvalue() { revert(0, 0) }
+                let _1 := 32
+                if slt(add(calldatasize(), not(3)), 32)
+                {
+                    revert(/** @src -1:-1:-1 */ 0, 0)
+                }
+                /// @src 0:40:988  "contract test {..."
+                let _2 := 4
+                let offset := calldataload(_2)
+                let _3 := 0xffffffffffffffff
+                if gt(offset, _3)
+                {
+                    revert(/** @src -1:-1:-1 */ 0, 0)
+                }
+                /// @src 0:40:988  "contract test {..."
+                if iszero(slt(add(offset, 35), calldatasize()))
+                {
+                    revert(/** @src -1:-1:-1 */ 0, 0)
+                }
+                /// @src 0:40:988  "contract test {..."
+                let _4 := calldataload(add(_2, offset))
+                let _5 := 36
+                if gt(_4, _3)
+                {
+                    mstore(/** @src -1:-1:-1 */ 0, /** @src 0:40:988  "contract test {..." */ shl(224, 0x4e487b71))
+                    mstore(_2, 0x41)
+                    revert(/** @src -1:-1:-1 */ 0, /** @src 0:40:988  "contract test {..." */ _5)
+                }
+                let _6 := shl(5, _4)
+                let memPtr := mload(64)
+                let newFreePtr := add(memPtr, and(add(_6, 63), not(31)))
+                if or(gt(newFreePtr, _3), lt(newFreePtr, memPtr))
+                {
+                    mstore(/** @src -1:-1:-1 */ 0, /** @src 0:40:988  "contract test {..." */ shl(224, 0x4e487b71))
+                    mstore(_2, 0x41)
+                    revert(/** @src -1:-1:-1 */ 0, /** @src 0:40:988  "contract test {..." */ _5)
+                }
+                mstore(64, newFreePtr)
+                let dst := memPtr
+                mstore(memPtr, _4)
+                dst := add(memPtr, 32)
+                let srcEnd := add(add(offset, _6), _5)
+                if gt(srcEnd, calldatasize())
+                {
+                    revert(/** @src -1:-1:-1 */ 0, 0)
+                }
+                /// @src 0:40:988  "contract test {..."
+                let src := add(offset, _5)
+                for { } lt(src, srcEnd) { src := add(src, _1) }
+                {
+                    mstore(dst, calldataload(src))
+                    dst := add(dst, _1)
+                }
+                if iszero(lt(/** @src 0:506:508  "44" */ 0x2c, /** @src 0:40:988  "contract test {..." */ mload(memPtr)))
+                {
+                    mstore(/** @src -1:-1:-1 */ 0, /** @src 0:40:988  "contract test {..." */ shl(224, 0x4e487b71))
+                    mstore(_2, 0x32)
+                    revert(/** @src -1:-1:-1 */ 0, /** @src 0:40:988  "contract test {..." */ _5)
+                }
+                /// @src 0:551:556  "l + 1"
+                let _7 := checked_add_int256(/** @src 0:534:539  "k + 1" */ checked_add_int256(/** @src 0:40:988  "contract test {..." */ mload(add(memPtr, 1440))))
+                let _8 := iszero(_7)
+                if iszero(or(_8, eq(/** @src 0:538:539  "1" */ 0x01, /** @src 0:40:988  "contract test {..." */ sdiv(_7, _7))))
+                {
+                    mstore(/** @src -1:-1:-1 */ 0, /** @src 0:40:988  "contract test {..." */ shl(224, 0x4e487b71))
+                    mstore(_2, 0x11)
+                    revert(/** @src -1:-1:-1 */ 0, /** @src 0:40:988  "contract test {..." */ _5)
+                }
+                let product := shl(/** @src 0:538:539  "1" */ 0x01, /** @src 0:40:988  "contract test {..." */ _7)
+                if iszero(or(_8, eq(/** @src 0:611:612  "2" */ 0x02, /** @src 0:40:988  "contract test {..." */ sdiv(product, _7))))
+                {
+                    mstore(/** @src -1:-1:-1 */ 0, /** @src 0:40:988  "contract test {..." */ shl(224, 0x4e487b71))
+                    mstore(_2, 0x11)
+                    revert(/** @src -1:-1:-1 */ 0, /** @src 0:40:988  "contract test {..." */ _5)
+                }
+                /// @src 0:752:757  "q * 3"
+                let _9 := checked_mul_int256(/** @src 0:40:988  "contract test {..." */ sdiv(/** @src 0:648:653  "o * 3" */ checked_mul_int256(/** @src 0:631:636  "o * 3" */ checked_mul_int256(/** @src 0:607:612  "n * 2" */ product)), /** @src 0:635:636  "3" */ 0x03))
+                /// @src 0:40:988  "contract test {..."
+                let product_1 := mul(5, _9)
+                if iszero(eq(_9, sdiv(product_1, 5)))
+                {
+                    mstore(/** @src -1:-1:-1 */ 0, /** @src 0:40:988  "contract test {..." */ shl(224, 0x4e487b71))
+                    mstore(_2, 0x11)
+                    revert(/** @src -1:-1:-1 */ 0, /** @src 0:40:988  "contract test {..." */ _5)
+                }
+                if iszero(or(iszero(product_1), eq(/** @src 0:810:811  "6" */ 0x06, /** @src 0:40:988  "contract test {..." */ sdiv(mul(_9, 30), product_1))))
+                {
+                    mstore(/** @src -1:-1:-1 */ 0, /** @src 0:40:988  "contract test {..." */ shl(224, 0x4e487b71))
+                    mstore(_2, 0x11)
+                    revert(/** @src -1:-1:-1 */ 0, /** @src 0:40:988  "contract test {..." */ _5)
+                }
+                if iszero(lt(/** @src 0:893:895  "46" */ 0x2e, /** @src 0:40:988  "contract test {..." */ mload(memPtr)))
+                {
+                    mstore(/** @src -1:-1:-1 */ 0, /** @src 0:40:988  "contract test {..." */ shl(224, 0x4e487b71))
+                    mstore(_2, 0x32)
+                    revert(/** @src -1:-1:-1 */ 0, /** @src 0:40:988  "contract test {..." */ _5)
+                }
+                return(/** @src -1:-1:-1 */ 0, 0)
+            }
+            /// @src 0:40:988  "contract test {..."
+            function checked_add_int256(x) -> sum
+            {
+                sum := add(x, /** @src 0:538:539  "1" */ 0x01)
+                /// @src 0:40:988  "contract test {..."
+                let _1 := slt(sum, /** @src 0:538:539  "1" */ 0x01)
+                /// @src 0:40:988  "contract test {..."
+                let _2 := slt(x, 0)
+                if or(and(iszero(_2), _1), and(_2, iszero(_1)))
+                {
+                    mstore(0, shl(224, 0x4e487b71))
+                    mstore(4, 0x11)
+                    revert(0, 0x24)
+                }
+            }
+            function checked_mul_int256(x) -> product
+            {
+                product := mul(x, /** @src 0:635:636  "3" */ 0x03)
+                /// @src 0:40:988  "contract test {..."
+                if iszero(or(iszero(x), eq(/** @src 0:635:636  "3" */ 0x03, /** @src 0:40:988  "contract test {..." */ sdiv(product, x))))
+                {
+                    mstore(0, shl(224, 0x4e487b71))
+                    mstore(4, 0x11)
+                    revert(0, 0x24)
+                }
+            }
+        }
+        data ".metadata" hex"a2646970667358221220faa8dd265c005fa234236dd6b5e64649970527b41c811514a98f9c25a473d42064736f6c63430008190033"
+    }
+}
+
